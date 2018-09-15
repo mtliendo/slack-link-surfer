@@ -10,6 +10,14 @@ const slackConfigDefaults = {
 };
 
 const fetchSlackLinks = (config = slackConfigDefaults) => {
+  return fetchSlackMessages(config)
+    .then(({ messages }) =>
+      parseLinksWithAttachments(messages.filter(msg => msg.attachments))
+    )
+    .catch(console.error);
+};
+
+const fetchSlackMessages = () => {
   const oldest = convertToSeconds(config);
 
   return axios
@@ -21,11 +29,7 @@ const fetchSlackLinks = (config = slackConfigDefaults) => {
         oldest
       })
     )
-    .then(data => data.data)
-    .then(({ messages }) =>
-      parseLinksWithAttachments(messages.filter(msg => msg.attachments))
-    )
-    .catch(console.error);
+    .then(data => data.data);
 };
 
 const convertToSeconds = config => {
