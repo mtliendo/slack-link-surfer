@@ -1,15 +1,15 @@
 const axios = require("axios");
 const querystring = require("querystring");
 
-const fetchSlackLinks = (
-  config = {
-    token: "",
-    channel: "",
-    day: false,
-    week: true,
-    custom: false
-  }
-) => {
+const slackConfigDefaults = {
+  token: "",
+  channel: "",
+  day: false,
+  week: false,
+  custom: false
+};
+
+const fetchSlackLinks = (config = slackConfigDefaults) => {
   const oldest = convertToSeconds(config);
 
   return axios
@@ -30,15 +30,17 @@ const fetchSlackLinks = (
 
 const convertToSeconds = config => {
   const nowInMillis = Date.now();
+  const secondsInADay = 86400;
+  const secondsInAWeek = 604800;
 
   if (config.custom) {
     return Math.floor(nowInMillis / 1000 - config.custom);
   } else if (config.day) {
-    const dayAgoInSeconds = Math.floor(nowInMillis / 1000 - 86400);
+    const dayAgoInSeconds = Math.floor(nowInMillis / 1000 - secondsInADay);
 
     return dayAgoInSeconds;
   } else if (config.week) {
-    const weekAgoInSeconds = Math.floor(nowInMillis / 1000 - 604800);
+    const weekAgoInSeconds = Math.floor(nowInMillis / 1000 - secondsInAWeek);
 
     return weekAgoInSeconds;
   }
