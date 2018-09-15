@@ -9,7 +9,7 @@
     "url": "https://github.com/mtliendo/slack-link-surfer.git"
   },
   "engines": {
-    "node": ">8.6"
+    "node": ">8"
   },
   "author": "mtliendo",
   "license": "MIT",
