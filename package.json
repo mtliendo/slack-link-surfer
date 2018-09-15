@@ -2,16 +2,19 @@
   "name": "slack-link-surfer",
   "version": "0.0.0-development",
   "description": "Easily scrape links from a Slack channel",
+  "homepage": "https://github.com/mtliendo/slack-link-surfer#readme",
   "main": "src/index.js",
-  "scripts": {
-    "test": "jest",
-    "build": "webpack --mode=production",
-    "travis-deploy-once": "travis-deploy-once",
-    "semantic-release": "semantic-release"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/mtliendo/slack-link-surfer.git"
+  },
+  "engines": {
+    "node": ">8.6"
+  },
+  "author": "mtliendo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mtliendo/slack-link-surfer/issues"
   },
   "keywords": [
     "slack",
@@ -21,12 +24,12 @@
     "cli",
     "attachments"
   ],
-  "author": "mtliendo",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mtliendo/slack-link-surfer/issues"
+  "scripts": {
+    "test": "jest",
+    "build": "webpack --mode=production",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   },
-  "homepage": "https://github.com/mtliendo/slack-link-surfer#readme",
   "dependencies": {
     "axios": "^0.18.0"
   },
