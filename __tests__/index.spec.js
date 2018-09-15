@@ -1,1 +1,3 @@
-expect(true).toBeTruthy();
+it("should pass", () => {
+  expect(true).toBeTruthy();
+});
