@@ -27,6 +27,7 @@
   "scripts": {
     "test": "jest",
     "build": "webpack --mode=production",
+    "start:dev": "webpack -w --mode=development ",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
