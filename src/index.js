@@ -17,7 +17,7 @@ const fetchSlackLinks = (config = slackConfigDefaults) => {
     .catch(console.error);
 };
 
-const fetchSlackMessages = () => {
+const fetchSlackMessages = config => {
   const oldest = convertToSeconds(config);
 
   return axios
