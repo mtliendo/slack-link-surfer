@@ -48,6 +48,7 @@ fetchSlackLinks(myConfig).then(links => {
 | day        | false         | NO\*     |
 | week       | false         | NO\*     |
 | custom     | false         | NO\*     |
+| exclude    | []            | NO       |
 
 **Note that one timeframe _must_ be present**
 
@@ -55,10 +56,8 @@ fetchSlackLinks(myConfig).then(links => {
 
 ### Limitations
 
-Because this applicaiton looks for `.attachments` within a message object--which is where Slack puts the links, links that don't _unfurl_ (expand) aren't currently displayed. In most cases, this in a non issue, however something to be mindful of.
+Because this application looks for `.attachments` within a message object--which is where Slack puts the links, links that don't _unfurl_ (expand) aren't currently displayed. In most cases, this in a non issue, however something to be mindful of.
 
 ### Known Issues
 
 - There is currently no way to add a disallowed list to filter out certain items (gifs, etc)
-
-- This module currently only ships with commonJS modules, ES Modules will later be supported.
