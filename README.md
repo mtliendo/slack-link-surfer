@@ -7,6 +7,8 @@
 
 ## Easily scrape links from a Slack channel
 
+> Great for sending out newsletters, generating "You may have missed.." posts, and much more!
+
 ### Overview
 
 A minimal-dependency, promise-based library.
@@ -27,7 +29,7 @@ Alternately if using _yarn_
 ### Usage
 
 ```js
-const fetchSlackLinks = require("./slack");
+import fetchSlackLinks from "slack-link-surfer";
 
 const myConfig = {
   token: mySlackUserToken,
@@ -41,6 +43,13 @@ fetchSlackLinks(myConfig).then(links => {
 });
 ```
 
+```js
+//If using with NodeJS/commonJS:
+const fetchSlackLinks = require("slack-link-surfer").default;
+```
+
+#### Configuration Options
+
 | Config Key | Default Value | Required |
 | ---------- | ------------- | -------- |
 | token      | ""            | YES      |
@@ -48,16 +57,16 @@ fetchSlackLinks(myConfig).then(links => {
 | day        | false         | NO\*     |
 | week       | false         | NO\*     |
 | custom     | false         | NO\*     |
-| exclude    | []            | NO       |
+| exclude    | [String]      | NO       |
 
 **Note that one timeframe _must_ be present**
 
 > `{token, channel, week:true}`
 
+> excluded strings are based on the `service_name` key returned from the API
+
 ### Limitations
 
 Because this application looks for `.attachments` within a message object--which is where Slack puts the links, links that don't _unfurl_ (expand) aren't currently displayed. In most cases, this in a non issue, however something to be mindful of.
 
-### Known Issues
-
-- There is currently no way to add a disallowed list to filter out certain items (gifs, etc)
+This application only support single-link messages. This means if a user posts a slack message with several links, only the first link will be captured.

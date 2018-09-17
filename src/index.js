@@ -17,6 +17,7 @@ const fetchSlackLinks = (config = slackConfigDefaults) => {
       parseLinksWithAttachments(messages.filter(msg => msg.attachments))
     )
     .then(msgs => removeDisallowed(msgs, config.exclude))
+
     .catch(console.error);
 };
 
