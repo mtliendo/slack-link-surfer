@@ -16,9 +16,10 @@ module.exports = {
       }
     ]
   },
+  devtool: "source-map",
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "main.js",
-    libraryTarget: "umd"
+    libraryTarget: "umd",
+    library: "fetchSlackLinks"
   }
 };
