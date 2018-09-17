@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "description": "Easily scrape links from a Slack channel",
   "homepage": "https://github.com/mtliendo/slack-link-surfer#readme",
-  "main": "src/index.js",
+  "main": "dist/main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/mtliendo/slack-link-surfer.git"
@@ -27,19 +27,26 @@
   "scripts": {
     "test": "jest",
     "build": "webpack --mode=production",
-    "start:dev": "webpack -w --mode=development ",
+    "build:dev": "webpack -w --mode=development ",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.2",
     "husky": "^1.0.0-rc.14",
     "jest": "^23.6.0",
     "prettier": "^1.14.2",
+    "regenerator-runtime": "^0.12.1",
     "semantic-release": "^15.9.15",
     "travis-deploy-once": "^5.0.7",
     "webpack": "^4.19.0",
