@@ -65,6 +65,14 @@ const fetchSlackLinks = require("slack-link-surfer").default;
 
 > excluded strings are based on the `service_name` key returned from the API
 
+### Obtaining A Token and Channel ID
+
+Note that Slack has many different types of tokens. A **user** token is needed for this application. A user token is essentially a placeholder for an actual user. This means any channels one can normally access in the app, a user token can be used to do the same.
+
+Simply head [HERE](https://api.slack.com/custom-integrations/legacy-tokens) and in the _Legacy Token Generator_ section, create a new user token (it should start with `xoxp`).
+
+Obtaining the channel you'd wish to scrape is even easier. Simply visit your channel in a browser, and the URL will contain the channel ID.
+
 ### Limitations
 
 Because this application looks for `.attachments` within a message object--which is where Slack puts the links, links that don't _unfurl_ (expand) aren't currently displayed. In most cases, this in a non issue, however something to be mindful of.
