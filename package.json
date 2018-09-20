@@ -8,6 +8,9 @@
     "type": "git",
     "url": "https://github.com/mtliendo/slack-link-surfer.git"
   },
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">8"
   },
