@@ -1,4 +1,4 @@
-export const parseLinksWithAttachments = (msgArr = [{ attachments: [] }]) => {
+module.exports = (msgArr = [{ attachments: [] }]) => {
   return msgArr.map(msg => {
     const {
       text,

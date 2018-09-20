@@ -1,17 +1,29 @@
-import axios from "axios";
-import querystring from "querystring";
-import { convertToSeconds } from "./convertToSeconds";
+require("isomorphic-fetch");
+const convertToSeconds = require("./convertToSeconds");
+const querystring = require("querystring");
 
-export const fetchSlackMessages = (config = {}) => {
+const isClient = typeof window !== "undefined";
+
+module.exports = (config = {}) => {
   const oldest = convertToSeconds(config);
-  return axios
-    .post(
-      "https://slack.com/api/conversations.history",
-      querystring.stringify({
-        token: config.token,
-        channel: config.channel,
-        oldest
-      })
-    )
-    .then(data => data.data);
+
+  let formData;
+
+  if (isClient) {
+    formData = new FormData();
+    formData.append("token", config.token);
+    formData.append("channel", config.channel);
+    formData.append("oldest", oldest);
+  } else {
+    formData = querystring.stringify({
+      token: config.token,
+      channel: config.channel,
+      oldest
+    });
+  }
+
+  return fetch("https://slack.com/api/conversations.history", {
+    method: "post",
+    body: formData
+  }).then(res => res.json());
 };

@@ -1,6 +1,6 @@
-import { removeDisallowed } from "./helpers/removeDisallowed";
-import { parseLinksWithAttachments } from "./helpers/parseLinksWithAttachments";
-import { fetchSlackMessages } from "./helpers/fetchSlackMessages";
+const removeDisallowed = require("./helpers/removeDisallowed");
+const parseLinksWithAttachments = require("./helpers/parseLinksWithAttachments");
+const fetchSlackMessages = require("./helpers/fetchSlackMessages");
 
 const slackConfigDefaults = {
   token: "",
@@ -21,4 +21,13 @@ const fetchSlackLinks = (config = slackConfigDefaults) => {
     .catch(console.error);
 };
 
-export default fetchSlackLinks;
+fetchSlackLinks({
+  exclude: ["code"],
+  week: true,
+  channel: "C02AAKTHX",
+  token:
+    "xoxp-2350673601-214739420454-437249814551-40be13c13923d9567faca1013ad46ffb"
+}).then(data => {
+  console.log(data);
+});
+//module.exports = fetchSlackLinks;
