@@ -30,6 +30,7 @@
   "scripts": {
     "test": "jest",
     "build": "rollup -c",
+    "prebuild": "rm -rf dist",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
