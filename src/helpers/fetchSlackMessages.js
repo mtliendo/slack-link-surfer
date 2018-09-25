@@ -1,6 +1,5 @@
 import "isomorphic-fetch";
 import convertToSeconds from "./convertToSeconds";
-import qs from "qs";
 
 export default (config = {}) => {
   const oldest = convertToSeconds(config);
