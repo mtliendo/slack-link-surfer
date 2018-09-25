@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "description": "Easily scrape links from a Slack channel",
   "homepage": "https://github.com/mtliendo/slack-link-surfer#readme",
-  "main": "dist/main.js",
+  "main": "dist/slack-link-surfer.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/mtliendo/slack-link-surfer.git"
@@ -37,7 +37,6 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "@babel/runtime": "^7.0.0",
     "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
@@ -51,7 +50,6 @@
     "husky": "^1.0.0-rc.14",
     "jest": "^23.6.0",
     "prettier": "^1.14.2",
-    "regenerator-runtime": "^0.12.1",
     "semantic-release": "^15.9.15",
     "travis-deploy-once": "^5.0.7",
     "webpack": "^4.19.1",

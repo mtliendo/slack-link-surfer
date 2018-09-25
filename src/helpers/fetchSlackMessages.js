@@ -1,29 +1,24 @@
-require("isomorphic-fetch");
-const convertToSeconds = require("./convertToSeconds");
-const querystring = require("querystring");
+import "isomorphic-fetch";
+import convertToSeconds from "./convertToSeconds";
+import qs from "qs";
 
-const isClient = typeof window !== "undefined";
-
-module.exports = (config = {}) => {
+export default (config = {}) => {
   const oldest = convertToSeconds(config);
 
-  let formData;
-
-  if (isClient) {
-    formData = new FormData();
-    formData.append("token", config.token);
-    formData.append("channel", config.channel);
-    formData.append("oldest", oldest);
-  } else {
-    formData = querystring.stringify({
-      token: config.token,
-      channel: config.channel,
-      oldest
-    });
-  }
+  let formData = {
+    token: config.token,
+    channel: config.channel,
+    oldest
+  };
 
   return fetch("https://slack.com/api/conversations.history", {
     method: "post",
-    body: formData
-  }).then(res => res.json());
+    body: JSON.stringify(formData),
+    headers: {
+      "content/type": "application/x-www-form-urlencoded"
+    }
+  }).then(res => {
+    console.log(res);
+    return res.json();
+  });
 };

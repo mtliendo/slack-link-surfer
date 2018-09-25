@@ -1,6 +1,6 @@
-const removeDisallowed = require("./helpers/removeDisallowed");
-const parseLinksWithAttachments = require("./helpers/parseLinksWithAttachments");
-const fetchSlackMessages = require("./helpers/fetchSlackMessages");
+import removeDisallowed from "./helpers/removeDisallowed";
+import parseLinksWithAttachments from "./helpers/parseLinksWithAttachments";
+import fetchSlackMessages from "./helpers/fetchSlackMessages";
 
 const slackConfigDefaults = {
   token: "",
@@ -11,23 +11,24 @@ const slackConfigDefaults = {
   exclude: []
 };
 
-const fetchSlackLinks = (config = slackConfigDefaults) => {
+export const fetchSlackLinks = (config = slackConfigDefaults) => {
   return fetchSlackMessages(config)
-    .then(({ messages }) =>
-      parseLinksWithAttachments(messages.filter(msg => msg.attachments))
-    )
+    .then(messages => {
+      console.log(messages);
+      return parseLinksWithAttachments(messages.filter(msg => msg.attachments));
+    })
     .then(msgs => removeDisallowed(msgs, config.exclude))
 
     .catch(console.error);
 };
 
-fetchSlackLinks({
-  exclude: ["code"],
-  week: true,
-  channel: "C02AAKTHX",
-  token:
-    "xoxp-2350673601-214739420454-437249814551-40be13c13923d9567faca1013ad46ffb"
-}).then(data => {
-  console.log(data);
-});
-//module.exports = fetchSlackLinks;
+// fetchSlackLinks({
+//   exclude: ["code"],
+//   week: true,
+//   channel: "C02AAKTHX",
+//   token:
+//     "xoxp-2350673601-214739420454-441668723111-46dc28c7fceb1ce9a598e641b0b4aadf"
+// }).then(data => {
+//   console.log("hlo");
+//   console.log(data);
+// });
