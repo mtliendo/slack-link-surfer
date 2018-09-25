@@ -1,4 +1,4 @@
-export const convertToSeconds = (config = {}) => {
+export default (config = {}) => {
   const nowInMillis = Date.now();
   const secondsInADay = 86400;
   const secondsInAWeek = 604800;

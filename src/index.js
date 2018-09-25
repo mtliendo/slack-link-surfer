@@ -1,6 +1,6 @@
-import { removeDisallowed } from "./helpers/removeDisallowed";
-import { parseLinksWithAttachments } from "./helpers/parseLinksWithAttachments";
-import { fetchSlackMessages } from "./helpers/fetchSlackMessages";
+import removeDisallowed from "./helpers/removeDisallowed";
+import parseLinksWithAttachments from "./helpers/parseLinksWithAttachments";
+import fetchSlackMessages from "./helpers/fetchSlackMessages";
 
 const slackConfigDefaults = {
   token: "",
@@ -13,9 +13,9 @@ const slackConfigDefaults = {
 
 const fetchSlackLinks = (config = slackConfigDefaults) => {
   return fetchSlackMessages(config)
-    .then(({ messages }) =>
-      parseLinksWithAttachments(messages.filter(msg => msg.attachments))
-    )
+    .then(messages => {
+      return parseLinksWithAttachments(messages.filter(msg => msg.attachments));
+    })
     .then(msgs => removeDisallowed(msgs, config.exclude))
 
     .catch(console.error);
