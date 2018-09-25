@@ -29,31 +29,22 @@
   ],
   "scripts": {
     "test": "jest",
-    "build": "webpack --mode=production",
-    "build:dev": "webpack -w --mode=development ",
-    "build:debug": "webpack --mode=none",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
     "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.1",
-    "@babel/preset-env": "^7.0.0",
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
-    "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.2",
     "husky": "^1.0.0-rc.14",
     "jest": "^23.6.0",
     "prettier": "^1.14.2",
     "semantic-release": "^15.9.15",
-    "travis-deploy-once": "^5.0.7",
-    "webpack": "^4.19.1",
-    "webpack-cli": "^3.1.0"
+    "travis-deploy-once": "^5.0.7"
   },
   "husky": {
     "hooks": {
