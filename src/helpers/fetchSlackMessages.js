@@ -14,7 +14,7 @@ export default (config = {}) => {
     method: "post",
     body: JSON.stringify(formData),
     headers: {
-      "content/type": "application/x-www-form-urlencoded"
+      "content-type": "application/x-www-form-urlencoded"
     }
   }).then(res => {
     console.log(res);
