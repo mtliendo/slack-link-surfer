@@ -35,7 +35,9 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "isomorphic-fetch": "^2.2.1"
+    "isomorphic-fetch": "^2.2.1",
+    "qs": "^6.5.2",
+    "rollup-plugin-node-builtins": "^2.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
@@ -50,6 +52,8 @@
     "prettier": "^1.14.2",
     "rollup": "^0.66.2",
     "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "semantic-release": "^15.9.15",
     "travis-deploy-once": "^5.0.7"

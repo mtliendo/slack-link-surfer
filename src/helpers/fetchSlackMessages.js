@@ -1,5 +1,6 @@
 import "isomorphic-fetch";
 import convertToSeconds from "./convertToSeconds";
+import qs from "qs";
 
 export default (config = {}) => {
   const oldest = convertToSeconds(config);
@@ -9,15 +10,14 @@ export default (config = {}) => {
     channel: config.channel,
     oldest
   };
-
   return fetch("https://slack.com/api/conversations.history", {
     method: "post",
-    body: JSON.stringify(formData),
+    body: qs.stringify(formData),
     headers: {
       "content-type": "application/x-www-form-urlencoded"
     }
-  }).then(res => {
-    console.log(res);
-    return res.json();
-  });
+  })
+    .then(res => res.json())
+    .then(jsonResp => jsonResp.messages)
+    .catch(console.log);
 };
